@@ -3,7 +3,7 @@ from average_values import average
 from day_type_calculate import day_type
 from city_averages_calculate import city_averages, extremes
 from daily_rain_calculate import totaL_daily_rain
-from heavy_rain_calculate import heavy_rain
+from heavy_rain_calculate import heavy_rain, day_city_heavy_rain_print
 
 days = ("Mon","Tue","Wed","Thu","Fri","Sat","Sun")
 weather = {
@@ -32,6 +32,15 @@ extremes(average_cleaned_dict)
 totaL_daily_rain(days, clean_list)
 
 # Heavy Rain functionality
-print("")
-print("RAIN ALERTS (20 mm or more)")
-heavy_rain(days, clean_list)
+for limit in (20,10): # 2 limits checked 20 and 10
+    print("")
+    print(f"RAIN ALERTS ({limit} mm or more)")
+
+    for index, day in enumerate(days):
+        day_city_heavy_rain = heavy_rain(index, clean_list, limit) # Returns list of tuples having 'city' and 'rain' values
+        if day_city_heavy_rain:
+            day_city_heavy_rain_print(days[index],day_city_heavy_rain,limit) # Prints the values of above list
+
+
+            
+
