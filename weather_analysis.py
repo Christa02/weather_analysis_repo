@@ -2,6 +2,8 @@ from clean_values import clean
 from average_values import average
 from day_type_calculate import day_type
 from city_averages_calculate import city_averages, extremes
+from daily_rain_calculate import totaL_daily_rain
+from heavy_rain_calculate import heavy_rain
 
 days = ("Mon","Tue","Wed","Thu","Fri","Sat","Sun")
 weather = {
@@ -22,9 +24,14 @@ weather = {
         "rain":[0,10,8,18,2,0,1]
     }
 }
-
 clean_list = clean(weather) # 'clean_list' dict has 'temp' list with no error values
 average(clean_list)
 day_type(clean_list)
 average_cleaned_dict = city_averages(clean_list) # 'average_cleaned_dict' has cities and its average temperatures
 extremes(average_cleaned_dict)
+totaL_daily_rain(days, clean_list)
+
+# Heavy Rain functionality
+print("")
+print("RAIN ALERTS (20 mm or more)")
+heavy_rain(days, clean_list)
