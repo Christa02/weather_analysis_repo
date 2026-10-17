@@ -1,6 +1,7 @@
 from clean_values import clean
 from average_values import average
 from day_type_calculate import day_type
+from city_averages_calculate import city_averages, extremes
 
 days = ("Mon","Tue","Wed","Thu","Fri","Sat","Sun")
 weather = {
@@ -22,6 +23,8 @@ weather = {
     }
 }
 
-clean_list = clean(weather)
+clean_list = clean(weather) # 'clean_list' dict has 'temp' list with no error values
 average(clean_list)
 day_type(clean_list)
+average_cleaned_dict = city_averages(clean_list) # 'average_cleaned_dict' has cities and its average temperatures
+extremes(average_cleaned_dict)
